@@ -28,12 +28,12 @@ function item(event) {
 	    Task: message,
 	    Subject: subject,
 	    SnsMessageId: messageId
-	    }
+	}
 }
 
 function itemParams(event) {
     return {
         TableName: table,
 	    Item: item(event)
-	    };
+    };
 }
