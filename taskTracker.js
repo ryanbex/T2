@@ -35,7 +35,7 @@ function table() {
 
 function offset() {
     // california -7
-    reutn -7;
+    return -7;
 }
 
 function currentDate(offset) {
