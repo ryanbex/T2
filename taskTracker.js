@@ -38,9 +38,14 @@ function offset() {
     return -7;
 }
 
-function currentDate(offset) {
+function currentDate() {
     return new Date( new Date().getTime() + offset * 3600 * 1000);
 }
+
+function time(date) {
+    return currentDate().toTimeString().split("G")[0];
+}
+
 
 function log(event) {
     console.log('From SNS:', event);
