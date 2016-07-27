@@ -11,6 +11,13 @@ exports.handler = (event, context, callback) => {
 	});
 };
 
+function itemParams(event) {
+    return {
+        TableName: table(),
+        Item: item(event)
+    };
+}
+
 function item(event) {
     var date = currentDate(offset());
     return {
@@ -20,13 +27,6 @@ function item(event) {
 	    Subject: event.Records[0].Sns.Subject,
 	    SnsMessageId: event.Records[0].Sns.MessageId
 	}
-}
-
-function itemParams(event) {
-    return {
-        TableName: table(),
-	    Item: item(event)
-    };
 }
 
 function table() {
@@ -46,6 +46,9 @@ function time(date) {
     return currentDate().toTimeString().split("G")[0];
 }
 
+function day(date) {
+    return currentDate().toDateString();
+}
 
 function log(event) {
     console.log('From SNS:', event);
