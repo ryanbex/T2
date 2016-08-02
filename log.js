@@ -1,10 +1,10 @@
-var Time = require('./time.js');
+let date = require('./date.js');
 
-var Log = {
+var log = {
 	log : function(event) {
 		console.log('From SNS:', event);
     	console.log('At:', Time.currentDate());
 	}
 }
 
-module.exports = Log;
+module.exports = log;

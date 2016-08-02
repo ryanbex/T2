@@ -1,6 +1,6 @@
 'use strict';
 
-let time = require('./time.js');
+let date = require('./date.js');
 let log = require('./log.js');
 let doc = require('dynamodb-doc');
 let dynamo = new doc.DynamoDB();
@@ -23,7 +23,7 @@ function itemParams(event) {
 }
 
 function item(event) {
-    var date = time.currentDate();
+    var date = date.currentDate();
     return {
         Day: date.toDateString(),
 	    StartTime: date.toTimeString().split("G")[0],
