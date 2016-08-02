@@ -1,13 +1,14 @@
 'use strict';
 
+let time = require('./time.js');
+let log = require('./log.js');
 let doc = require('dynamodb-doc');
 let dynamo = new doc.DynamoDB();
-var Time = require('./time.js');
-var Log = require('./log.js');
+
 const table = 'Tasks';
 
 exports.handler = (event, context, callback) => {
-    Log.log(event);
+    log.log(event);
     dynamo.putItem(itemParams(event), function(err, response) {
 	    if (err) console.log(err);
 	    context.done(null,'');
@@ -22,7 +23,7 @@ function itemParams(event) {
 }
 
 function item(event) {
-    var date = Time.currentDate();
+    var date = time.currentDate();
     return {
         Day: date.toDateString(),
 	    StartTime: date.toTimeString().split("G")[0],
